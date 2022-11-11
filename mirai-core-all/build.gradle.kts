@@ -23,6 +23,7 @@ dependencies {
     api(project(":mirai-core"))
     api(project(":mirai-core-api"))
     api(project(":mirai-core-utils"))
+    api(`slf4j-api`) // It is required for mirai-console to avoid classpath conflict
 }
 
 if (System.getenv("MIRAI_IS_SNAPSHOTS_PUBLISHING")?.toBoolean() != true) {
