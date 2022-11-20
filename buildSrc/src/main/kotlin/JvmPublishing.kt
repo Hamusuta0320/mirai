@@ -85,8 +85,10 @@ inline fun Project.configurePublishing(
         archiveClassifier.set("all")
         manifest.inheritFrom(tasks.getByName<Jar>("jar").manifest)
         from(project.sourceSets["main"].output)
-        configurations =
-            listOfNotNull(project.configurations.findByName("runtimeClasspath") ?: project.configurations["runtime"])
+        configurations = listOfNotNull(
+            project.configurations.findByName("runtimeClasspath") ?: project.configurations["runtime"],
+            project.configurations.findByName("shadowOnly"),
+        )
 
         exclude("META-INF/INDEX.LIST", "META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "module-info.class")
     }
